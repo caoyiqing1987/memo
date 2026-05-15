@@ -36,7 +36,7 @@ Agent A           Agent B           You
 
 ```bash
 # Install
-curl -fsSL https://raw.githubusercontent.com/<user>/memo/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/caoyiqing1987/memo/main/install.sh | bash
 
 # Or locally
 git clone https://github.com/<user>/memo.git
