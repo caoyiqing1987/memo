@@ -131,12 +131,11 @@ your-project/
 
 | Tool | Status | How |
 |------|--------|-----|
-| Claude Code | ✅ | Read INDEX.md → load entries on demand |
-| Cursor | ✅ | Same pattern |
-| Windsurf | ✅ | Same pattern |
-| ChatGPT / GPTs | ✅ | Paste INDEX.md or point to `.memo/` |
-| Any AI Agent | ✅ | File system = universal interface |
-| You (human) | ✅ | Edit in VSCode, or use `memo add` |
+| Claude Code | ✅ | Auto-read via CLAUDE.md → [guide](AGENT_INTEGRATION.md) |
+| Cursor | ✅ | Auto-read via .cursorrules → [guide](AGENT_INTEGRATION.md) |
+| Windsurf | ✅ | Auto-read via .windsurfrules → [guide](AGENT_INTEGRATION.md) |
+| ChatGPT / GPTs | 🔄 | Manual paste → [guide](AGENT_INTEGRATION.md) |
+| GitHub Copilot Chat | ✅ | Via copilot-instructions → [guide](AGENT_INTEGRATION.md) |
 
 No API keys. No servers. No vendor lock-in. Just files.
 
