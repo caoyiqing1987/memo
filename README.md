@@ -7,8 +7,8 @@
 </p>
 
 <h1 align="center">🧠 memo</h1>
-<p align="center"><b>AI 智能体的长期记忆系统</b></p>
-<p align="center">让 Claude Code、Cursor、ChatGPT 记住你的一切<br>不再每次对话从零开始</p>
+<p align="center"><b>Long-term memory for AI agents</b></p>
+<p align="center">One memory layer for Claude Code, Cursor, ChatGPT, and every other AI tool you use.<br>Stop repeating yourself. Make your AI remember.</p>
 
 <p align="center">
   <img src="https://img.shields.io/github/stars/caoyiqing1987/memo?style=social" alt="stars">
@@ -17,149 +17,158 @@
 
 ---
 
-## 🤷 你是不是也这样？
+## 🤷 Ever had this conversation?
 
-> "我刚告诉过你的啊……"
-> "这是第三次解释这个项目了……"
-> "Claude 怎么又不记得我的配置了……"
+> **You:** "Remember, the client's budget is $50k and we're pitching next Friday."
 
-**每次和 AI 对话，它都不记得上一次说了什么。**
+> **AI:** "Got it!"
 
-不是它笨，是它没有长期记忆。
+> *Next session...*
 
-**memo 就是来解决这个问题的。**
+> **You:** "So about that client..."
+
+> **AI:** "What client?"
+
+Every AI conversation starts from zero. Not because AI is dumb — because it has **no long-term memory**.
+
+**memo fixes that.** One CLI tool. Shared memory. Human and AI on the same page.
 
 ---
 
-## 🎯 memo 是什么
+## 🎯 What is memo?
 
-一个 CLI 工具，帮你和 AI 建立**共享的长期记忆**。
+A CLI tool that gives your AI agents **persistent, structured, file-based memory**. Think of it as a shared notebook between you and every AI you work with.
 
 ```
-你： "这个项目的客户是智己汽车，预算50万"
+You: "The project uses FastAPI + TailwindCSS"
 ↓
-memo add "客户智己汽车，预算50万"
+memo add "Tech stack: FastAPI + TailwindCSS"
 ↓
-.memo/entries/clients.md  ← 自动分类存好了
+.memo/entries/tech.md  ← auto-categorized
 ↓
-下次 AI 启动时： "我记得，客户智己汽车，预算50万"
+Next AI session: "I remember — FastAPI + TailwindCSS"
 ```
 
-**一句话：你和 AI 共用同一份记忆。**
+**One memory. Any AI. Any project.**
 
 ---
 
-## ✨ 为什么你需要 memo
+## ✨ Why memo?
 
-| 痛点 | memo 解决 |
-|------|-----------|
-| 每次对话 AI 都不记得你 | ✅ 记忆跨 session 持久化 |
-| 同时用 Claude Code + Cursor + ChatGPT | ✅ 统一记忆层，全家桶共享 |
-| 重要信息散落在聊天记录里 | ✅ 自动分类归档，一条命令搞定 |
-| 项目做到一半换工具 | ✅ 文件系统，什么工具都能读 |
-| AI 记忆动不动就满了 | ✅ 按需加载，不占上下文 |
+| The Problem | How memo Helps |
+|-------------|---------------|
+| AI forgets everything between sessions | ✅ Persistent memory, cross-session |
+| Using Claude Code + Cursor + ChatGPT together | ✅ Single memory layer, all tools share it |
+| Important details lost in chat history | ✅ Auto-categorized, one command to save |
+| Switching AI tools mid-project | ✅ File-based, no lock-in |
+| Context windows fill up | ✅ Load only what you need, on demand |
 
 ---
 
-## 🚀 30 秒上手
+## 🚀 Quick Start
 
 ```bash
-# 安装
+# Install
 curl -fsSL https://raw.githubusercontent.com/caoyiqing1987/memo/main/install.sh | bash
 
-# 在项目里初始化记忆库
+# Start remembering in any project
 cd your-project
 memo init
 
-# 让 AI 记住事情
-memo add "客户预算50万，下周五提案"
-memo add "技术方案用 FastAPI + TailwindCSS"
-memo add "团队成员：小王前端、小李后端"
+# Save what matters
+memo add "Client budget is $50k, pitch next Friday"
+memo add "Tech stack: FastAPI + TailwindCSS"
+memo add "Team: Alice frontend, Bob backend"
 
-# 查看记住了什么
+# See what's been saved
 memo list
 
-# stats
+# Statistics
 memo status
 ```
 
 ---
 
-## 📖 命令一览
+## 📖 Commands
 
-| 命令 | 作用 |
-|------|------|
-| `memo init` | 在当前目录创建 `.memo/` 记忆仓库 |
-| `memo add "..."` | 添加一条记忆（自动分类） |
-| `memo list` | 按分类浏览所有记忆 |
-| `memo list clients` | 只看客户相关记忆 |
-| `memo status` | 记忆仓库统计 |
-| `memo sync` | 归档旧日志、清理备份、重建索引 |
+| Command | What it does |
+|---------|-------------|
+| `memo init` | Create `.memo/` in current directory |
+| `memo add "..."` | Save a memory (auto-categorized) |
+| `memo list` | Browse all memories by category |
+| `memo list clients` | Show only client-related memories |
+| `memo status` | Memory statistics |
+| `memo sync` | Archive old logs, clean backups, rebuild index |
 
 ---
 
-## 🧩 结构
+## 🧩 How it works
 
 ```
 your-project/
 ├── .memo/
-│   ├── INDEX.md        ← 记忆目录（AI从这里查有哪些记忆）
-│   ├── entries/        ← 分类存放
-│   │   ├── clients.md  ← 客户信息
-│   │   ├── tech.md     ← 技术方案
-│   │   ├── team.md     ← 团队信息
-│   │   ├── design.md   ← 设计决策
-│   │   └── ...
-│   ├── logs/           ← 每日日志
-│   └── backup/         ← 自动备份
-├── (你的项目文件)
+│   ├── INDEX.md        ← Table of contents (AI reads this first)
+│   ├── entries/        ← One file per category
+│   │   ├── clients.md
+│   │   ├── tech.md
+│   │   ├── team.md
+│   │   ├── design.md
+│   │   └── general.md
+│   ├── logs/           ← Daily activity log
+│   └── backup/         ← Rotated snapshots
+├── (your actual project files)
 ```
 
-AI 启动时只要做三件事：
-1. 读 `INDEX.md` — 看有哪些记忆类别
-2. 按需加载对应文件
-3. 有新信息就 `memo add` 写回去
+**For AI agents**, the protocol is simple:
+
+1. Read `INDEX.md` to discover available categories
+2. Load the relevant `.md` files based on the task
+3. When new info surfaces, write it back with `memo add`
 
 ---
 
-## 🔌 兼容性
+## 🔌 Compatibility
 
-| 工具 | 支持 | 说明 |
-|------|------|------|
-| Claude Code | ✅ | 读 INDEX.md 后按需加载 entry |
-| Cursor | ✅ | 同 | 
-| Windsurf | ✅ | 同 |
-| ChatGPT | ✅ | 粘贴 INDEX.md 即可 |
-| 任何 AI Agent | ✅ | 文件系统无锁，谁都能读 |
-| 你（人类） | ✅ | VSCode 直接编辑或 `memo add` |
+| Tool | Status | How |
+|------|--------|-----|
+| Claude Code | ✅ | Read INDEX.md → load entries on demand |
+| Cursor | ✅ | Same pattern |
+| Windsurf | ✅ | Same pattern |
+| ChatGPT / GPTs | ✅ | Paste INDEX.md or point to `.memo/` |
+| Any AI Agent | ✅ | File system = universal interface |
+| You (human) | ✅ | Edit in VSCode, or use `memo add` |
 
----
-
-## 💡 设计理念
-
-**好的记忆系统，人和 AI 都能用。**
-
-- 不用数据库，不依赖任何服务
-- 不锁定某个 AI 品牌
-- 不限制记忆容量（文件系统多大就能记多少）
-- 人可以用编辑器改，AI 可以用 CLI 读写
-- 双向同步，谁改的对方都知道
+No API keys. No servers. No vendor lock-in. Just files.
 
 ---
 
-## 📦 技术细节
+## 💡 Why files?
 
-- 纯 Python 3 实现，零依赖
-- 自动分类：根据关键词智能匹配 clients / tech / team / design 等类别
-- 30 天日志归档，90 天备份清理
-- INDEX.md 自动维护，无需手动编辑
-- MIT 开源，随便改
+Most AI memory systems are closed databases locked to one platform. memo takes the opposite approach:
+
+- **No database** — plain Markdown, git-friendly
+- **No service** — runs locally, zero dependencies
+- **No limits** — your disk is your memory cap
+- **No lock-in** — any tool can read and write files
+- **Human accessible** — open in any editor, changes sync both ways
+
+> "A memory system that only AI can read isn't a memory system — it's a black box."
+
+---
+
+## 📦 Technical
+
+- Pure Python 3, zero external dependencies
+- Auto-categorization via keyword matching
+- 30-day log rotation, 90-day backup pruning
+- INDEX.md auto-generated, never manual
+- MIT License — free to use, modify, share
 
 ---
 
 <p align="center">
-  <b>🧠 memo — 让 AI 不再是金鱼</b><br>
+  <b>🧠 memo — Make your AI remember.</b><br>
   <a href="https://github.com/caoyiqing1987/memo">GitHub</a> ·
-  <a href="https://github.com/caoyiqing1987/memo/issues">反馈</a> ·
-  <a href="https://github.com/caoyiqing1987/memo/blob/main/README.md">文档</a>
+  <a href="https://github.com/caoyiqing1987/memo/issues">Feedback</a> ·
+  <a href="https://github.com/caoyiqing1987/memo/blob/main/README.md">Docs</a>
 </p>
